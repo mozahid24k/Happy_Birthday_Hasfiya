@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hasfiya❤️!</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffeef8 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, hsl(20, 88%, 48%), #fa7070, #fa7070);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 2s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        /* Heart Container */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 8s linear forwards;
+            opacity: 0;
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
+            bottom: -50px;
+        }
+        
+        /* Balloon Styles */
+        .balloon {
+            position: absolute;
+            pointer-events: none;
+            animation: floatDown 15s linear infinite;
+            opacity: 0.9;
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .balloon:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: rgba(0,0,0,0.2);
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            aspect-ratio: 3/4;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            color: white;
+            z-index: 2;
+            transition: bottom 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            bottom: 0;
+        }
+        
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #ffd6e7 0%, #ffeff7 100%);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .love-note {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Birthday Message */
+        .birthday-message {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: #ff6b6b;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+            opacity: 0;
+        }
+        
+        /* Click Love Message */
+        .click-love-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #ff6b6b;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            animation: fadeInOut 1.5s ease;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatDown {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .birthday-message {
+                font-size: 2rem;
+                width: 90%;
+            }
+            
+            .click-love-message {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Hearts Container -->
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <!-- Balloons Container -->
+    <div class="hearts-container" id="balloons-container"></div>
+    
+    <!-- Birthday Message (hidden initially) -->
+    <div class="birthday-message" id="birthday-message"></div>
+    
+    <!-- Click Love Message -->
+    <div class="click-love-message" id="click-love-message"></div>
+    
+    <header>
+        <h1>Happy Birthday  HASFIYA!</h1>
+        <p class="subtitle">Whenever I Listen Your Voice_My Heart Start Beating More Than 2X</p>
+    </header>
+    
+    <main>
+        <div class="gallery">
+            <!-- Gallery Item 1 -->
+            <div class="gallery-item">
+        <img src="1.png" alt="My Love 1">
+        <div class="gallery-caption">
+            <h3>Happy Birthday</h3>
+            <p>Dear Hasfiya ❤️</p>
+        </div>
+            </div>
+            
+            <!-- Gallery Item 2 -->
+           <div class="gallery-item">
+        <img src="2.png" alt="My Love 2">
+        <div class="gallery-caption">
+            <h3>Dear Hasfiya❤️</h3>
+            <p>Happy Birthday To You</p>
+        </div>
+            </div>
+            
+            <!-- Gallery Item 3 -->
+            <div class="gallery-item">
+        <img src="3.png" alt="My Love 3">
+        <div class="gallery-caption">
+            <h3>Cinema Time</h3>
+            <p>Best Moment of My life</p>
+        </div>
+            </div>
+            
+            <!-- Gallery Item 4 -->
+            <div class="gallery-item">
+        <img src="4.png" alt="My Love 4">
+        <div class="gallery-caption">
+            <h3>My Everything</h3>
+            <p>Heart, body and soul</p>
+        </div>
+            </div>
+            
+            <!-- Gallery Item 5 -->
+           <div class="gallery-item">
+        <img src="5.png" alt="My Love 5">
+        <div class="gallery-caption">
+            <h3>Domino 's Time</h3>
+            <p>I Still Remember The Day</p>
+        </div>
+            </div>
+            
+            <!-- Gallery Item 6 -->
+            <div class="gallery-item">
+        <img src="6.png" alt="My Love 6">
+        <div class="gallery-caption">
+            <h3>Forever Yours</h3>
+            <p>Through all lifetimes</p>
+        </div>
+            </div>
+
+            <!-- Gallery Item 7 -->
+<div class="gallery-item">
+    <img src="7.png" alt="My Love 7">
+    <div class="gallery-caption">
+        <h3>Forever Yours</h3>
+        <p>Through all lifetimes</p>
+    </div>
+</div>
+
+<!-- Gallery Item 8 -->
+<div class="gallery-item">
+    <img src="8.png" alt="My Love 8">
+    <div class="gallery-caption">
+        <h3>Once Again</h3>
+        <p>Happy Birthday Dear Hasfiya</p>
+    </div>
+</div>
+
+<!-- Gallery Item 9 -->
+<div class="gallery-item">
+    <img src="9.png" alt="My Love 9">
+    <div class="gallery-caption">
+        <h3>Love You Baby</h3>
+        <p>Will You Be Mine Forever💖</p>
+    </div>
+</div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="love-note">
+            Love you Baby — Till Last breath. ❤️
+        </div>
+        <p>Created with endless love ~Mozahid</p>
+    </footer>
+
+    <script>
+        // Create floating hearts continuously
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create initial burst of hearts
+            createHeartBurst();
+            
+            // Continue creating hearts every second
+            setInterval(createHeartBurst, 1000);
+            
+            // Create balloons continuously
+            createBalloonBurst();
+            setInterval(createBalloonBurst, 2000);
+            
+            // Make gallery items appear one by one
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+            
+            // Setup birthday message
+            const birthdayMsg = document.getElementById('birthday-message');
+            birthdayMsg.textContent = 'Happy Birthday Hasfiya🎂 ';
+            
+            // Show birthday message after 5 seconds
+            setTimeout(() => {
+                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
+                // Remove after animation
+                setTimeout(() => {
+                    birthdayMsg.style.animation = '';
+                    birthdayMsg.style.opacity = '0';
+                }, 5000);
+            }, 5000);
+            
+            // Show again every 30 seconds
+            setInterval(() => {
+                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
+                setTimeout(() => {
+                    birthdayMsg.style.animation = '';
+                    birthdayMsg.style.opacity = '0';
+                }, 5000);
+            }, 30000);
+        });
+        
+        // Romantic background music
+        const audio = new Audio('123.mp3');
+        audio.loop = true;
+        
+        // Start music after first interaction
+        function startMusic() {
+            audio.play().catch(e => console.log("Audio play prevented:", e));
+            document.body.removeEventListener('click', startMusic);
+        }
+        document.body.addEventListener('click', startMusic);
+        
+        function createHeartBurst() {
+            // Create 10-15 hearts in random positions along the bottom
+            const heartCount = Math.floor(Math.random() * 6) + 10;
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 100);
+            }
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            // Random properties
+            const startX = Math.random() * 100;
+            const size = Math.random() * 1.5 + 0.5;
+            const duration = Math.random() * 5 + 8; // 8-13 seconds
+            const delay = Math.random() * 2;
+            const colorVariation = Math.random() * 60 + 330; // Pink/red hues
+            
+            heart.style.left = `${startX}%`;
+            heart.style.fontSize = `${size}rem`;
+            heart.style.color = `hsl(${colorVariation}, 100%, 70%)`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.animationDelay = `${delay}s`;
+            heart.style.opacity = '0.8';
+            
+            document.getElementById('hearts-container').appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        function createBalloonBurst() {
+            // Create 3-6 balloons in random positions along the top
+            const balloonCount = Math.floor(Math.random() * 4) + 3;
+            
+            for (let i = 0; i < balloonCount; i++) {
+                setTimeout(() => {
+                    createBalloon();
+                }, i * 300);
+            }
+        }
+        
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            // Random properties
+            const startX = Math.random() * 100;
+            const size = Math.random() * 30 + 30; // 30-60px
+            const duration = Math.random() * 10 + 15; // 15-25 seconds
+            const delay = Math.random() * 5;
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffd6d6', '#f06292', '#ba68c8', '#9575cd', '#7986cb', '#64b5f6', '#4fc3f7'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const sway = Math.random() * 20 - 10; // -10 to 10 degrees
+            
+            balloon.style.left = `${startX}%`;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size * 1.25}px`;
+            balloon.style.background = color;
+            balloon.style.animationDuration = `${duration}s`;
+            balloon.style.animationDelay = `${delay}s`;
+            balloon.style.transform = `translateX(${sway}px)`;
+            
+            document.getElementById('balloons-container').appendChild(balloon);
+            
+            // Remove balloon after animation completes
+            setTimeout(() => {
+                balloon.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // Click event handler with vibration and love message
+        document.addEventListener('click', function(e) {
+            // Vibrate if supported (mobile devices)
+            if ('vibrate' in navigator) {
+                // Vibrate pattern: 200ms vibration, 100ms pause, 200ms vibration
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            // Show love message
+            const loveMsg = document.getElementById('click-love-message');
+            loveMsg.textContent = 'Happy Birthday To You ❣️';
+            loveMsg.style.animation = 'none';
+            void loveMsg.offsetWidth; // Trigger reflow
+            loveMsg.style.animation = 'fadeInOut 5s ease';
+            
+            // Create hearts at click position
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const x = e.clientX + (Math.random() * 60 - 30);
+                    const y = e.clientY + (Math.random() * 60 - 30);
+                    createClickHeart(x, y);
+                }, i * 100);
+            }
+        });
+        
+        function createClickHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.position = 'fixed';
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            heart.style.fontSize = `${Math.random() * 1 + 1}rem`;
+            heart.style.animation = 'floatUp 3s ease-out forwards';
+            heart.style.zIndex = '1000';
+            heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+            
+            document.getElementById('hearts-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
