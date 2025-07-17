@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Hasfiya❤️!</title>
     <style>
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +19,6 @@
             min-height: 100vh;
         }
         
-        /* Header Styles */
         header {
             text-align: center;
             padding: 3rem 1rem;
@@ -46,7 +44,6 @@
             animation: fadeIn 2.5s ease;
         }
         
-        /* Heart Container */
         .hearts-container {
             position: fixed;
             top: 0;
@@ -58,7 +55,6 @@
             overflow: hidden;
         }
         
-        /* Heart Animation */
         .heart {
             position: absolute;
             pointer-events: none;
@@ -70,7 +66,6 @@
             bottom: -50px;
         }
         
-        /* Balloon Styles */
         .balloon {
             position: absolute;
             pointer-events: none;
@@ -94,7 +89,6 @@
             transform: translateX(-50%);
         }
         
-        /* Gallery Styles */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -162,7 +156,6 @@
             bottom: 0;
         }
         
-        /* Footer Styles */
         footer {
             text-align: center;
             padding: 3rem 1rem;
@@ -177,7 +170,6 @@
             animation: pulse 2s infinite;
         }
         
-        /* Birthday Message */
         .birthday-message {
             position: fixed;
             top: 20%;
@@ -191,7 +183,6 @@
             opacity: 0;
         }
         
-        /* Click Love Message */
         .click-love-message {
             position: fixed;
             top: 50%;
@@ -207,54 +198,31 @@
             animation: fadeInOut 1.5s ease;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .sweet-ending {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ff3a6e;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #ffb6c1;
         }
         
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .sweet-ending.show {
+            bottom: 30px;
+            opacity: 1;
         }
         
-        @keyframes floatDown {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-        }
-        
-        /* Gift Box Icon */
         .gift-box {
             display: inline-block;
             margin-left: 10px;
@@ -271,7 +239,6 @@
             text-shadow: 0 3px 10px rgba(255, 107, 107, 0.5);
         }
         
-        /* Love Notes Modal */
         .love-notes-modal {
             position: fixed;
             top: 50%;
@@ -332,15 +299,14 @@
             transition: color 0.3s ease;
             line-height: 1;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            z-index: 2100; /* Added to ensure it stays on top */
-            pointer-events: auto; /* Added to ensure it's clickable */
+            z-index: 2100;
+            pointer-events: auto;
         }
         
         .close-notes:hover {
             color: #ff3a6e;
         }
         
-        /* Overlay */
         .overlay {
             position: fixed;
             top: 0;
@@ -360,7 +326,6 @@
             pointer-events: all;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -384,22 +349,67 @@
                 max-width: none;
                 padding: 1.5rem;
             }
+            
+            .sweet-ending {
+                font-size: 1.4rem;
+                padding: 1rem 1.5rem;
+                width: 85%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes floatDown {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Hearts Container -->
     <div class="hearts-container" id="hearts-container"></div>
-    
-    <!-- Balloons Container -->
     <div class="hearts-container" id="balloons-container"></div>
-    
-    <!-- Birthday Message (hidden initially) -->
     <div class="birthday-message" id="birthday-message"></div>
-    
-    <!-- Click Love Message -->
     <div class="click-love-message" id="click-love-message"></div>
     
     <header>
@@ -409,7 +419,6 @@
     
     <main>
         <div class="gallery">
-            <!-- Gallery Item 1 -->
             <div class="gallery-item">
                 <img src="1.png" alt="My Love 1">
                 <div class="gallery-caption">
@@ -418,7 +427,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Item 2 -->
             <div class="gallery-item">
                 <img src="2.png" alt="My Love 2">
                 <div class="gallery-caption">
@@ -427,7 +435,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Item 3 -->
             <div class="gallery-item">
                 <img src="3.png" alt="My Love 3">
                 <div class="gallery-caption">
@@ -436,7 +443,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Item 4 -->
             <div class="gallery-item">
                 <img src="4.png" alt="My Love 4">
                 <div class="gallery-caption">
@@ -445,7 +451,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Item 5 -->
             <div class="gallery-item">
                 <img src="5.png" alt="My Love 5">
                 <div class="gallery-caption">
@@ -454,7 +459,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Item 6 -->
             <div class="gallery-item">
                 <img src="6.png" alt="My Love 6">
                 <div class="gallery-caption">
@@ -463,7 +467,6 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 7 -->
             <div class="gallery-item">
                 <img src="7.png" alt="My Love 7">
                 <div class="gallery-caption">
@@ -472,7 +475,6 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 8 -->
             <div class="gallery-item">
                 <img src="8.png" alt="My Love 8">
                 <div class="gallery-caption">
@@ -481,7 +483,6 @@
                 </div>
             </div>
 
-            <!-- Gallery Item 9 -->
             <div class="gallery-item">
                 <img src="9.png" alt="My Love 9">
                 <div class="gallery-caption">
@@ -498,7 +499,6 @@
         </div>
         <p>Created with endless love ~Mozahid <span class="gift-box" id="gift-box">🎁</span></p>
         
-        <!-- Love Notes Modal -->
         <div class="overlay" id="overlay"></div>
         <div class="love-notes-modal" id="love-notes-modal">
             <span class="close-notes" id="close-notes">&times;</span>
@@ -512,8 +512,12 @@
         </div>
     </footer>
 
+    <div class="sweet-ending" id="sweet-ending">
+        Hasfiya, this page was made with endless love. Forever yours — Mozahid 💞
+    </div>
+
     <script>
-        // Gift Box Click Handler - MODIFIED TO FIX CLOSE BUTTON
+        // Gift Box Click Handler
         document.addEventListener('DOMContentLoaded', function() {
             const giftBox = document.getElementById('gift-box');
             const loveNotesModal = document.getElementById('love-notes-modal');
@@ -521,7 +525,7 @@
             const closeNotes = document.getElementById('close-notes');
             
             giftBox.addEventListener('click', function(e) {
-                e.stopPropagation(); // Added to prevent event bubbling
+                e.stopPropagation();
                 loveNotesModal.classList.add('active');
                 overlay.classList.add('active');
                 
@@ -540,13 +544,13 @@
             });
             
             closeNotes.addEventListener('click', function(e) {
-                e.stopPropagation(); // Added to prevent event bubbling
+                e.stopPropagation();
                 loveNotesModal.classList.remove('active');
                 overlay.classList.remove('active');
             });
             
             overlay.addEventListener('click', function(e) {
-                e.stopPropagation(); // Added to prevent event bubbling
+                e.stopPropagation();
                 loveNotesModal.classList.remove('active');
                 overlay.classList.remove('active');
             });
@@ -571,7 +575,6 @@
             }, 3000);
         }
 
-        // Create floating hearts continuously
         function createHeartBurst() {
             const heartCount = Math.floor(Math.random() * 6) + 10;
             
@@ -644,6 +647,31 @@
             }, (duration + delay) * 1000);
         }
         
+        // Sweet Message Animation Loop
+        function showSweetMessage() {
+            const ending = document.getElementById('sweet-ending');
+            
+            // Show message
+            ending.classList.add('show');
+            
+            // Add floating hearts
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const x = window.innerWidth * Math.random();
+                    const y = window.innerHeight * 0.7;
+                    createClickHeart(x, y);
+                }, i * 200);
+            }
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                ending.classList.remove('show');
+            }, 5000);
+            
+            // Repeat every 10 seconds (5s visible + 5s hidden)
+            setTimeout(showSweetMessage, 10000);
+        }
+
         // Romantic background music
         const audio = new Audio('123.mp3');
         audio.loop = true;
@@ -652,8 +680,7 @@
             audio.play().catch(e => console.log("Audio play prevented:", e));
             document.body.removeEventListener('click', startMusic);
         }
-        document.body.addEventListener('click', startMusic);
-        
+
         // Initial setup
         document.addEventListener('DOMContentLoaded', function() {
             createHeartBurst();
@@ -692,6 +719,12 @@
                     birthdayMsg.style.opacity = '0';
                 }, 5000);
             }, 30000);
+            
+            // Start sweet message loop after 30 seconds
+            setTimeout(showSweetMessage, 30000);
+            
+            // Start music on first click
+            document.body.addEventListener('click', startMusic);
         });
         
         // Click event handler
