@@ -254,6 +254,112 @@
             100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
         }
         
+        /* Gift Box Icon */
+        .gift-box {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #ff6b6b;
+            transition: all 0.3s ease;
+            vertical-align: middle;
+            text-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+        }
+        
+        .gift-box:hover {
+            transform: scale(1.2) rotate(10deg);
+            text-shadow: 0 3px 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* Love Notes Modal */
+        .love-notes-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffecef 50%, #ffdfe6 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(15, 15, 15, 0.3);
+            z-index: 2000;
+            width: 50%;
+            max-width: 350px;
+            min-width: 250px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            border: 1px solid #ffb6c1;
+        }
+        
+        .love-notes-modal.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .love-notes-content p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #6a3a4a;
+            font-style: italic;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+        }
+        
+        .love-notes-content p:first-child {
+            color: #ff3a6e;
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-style: normal;
+            margin-top: 0;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+        }
+        
+        .love-notes-content p:last-child {
+            margin-bottom: 0;
+            color: #ff3a6e;
+            font-weight: bold;
+        }
+        
+        .close-notes {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #ff8fa3;
+            transition: color 0.3s ease;
+            line-height: 1;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            z-index: 2100; /* Added to ensure it stays on top */
+            pointer-events: auto; /* Added to ensure it's clickable */
+        }
+        
+        .close-notes:hover {
+            color: #ff3a6e;
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 0%;
+            background: rgba(3, 3, 3, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -271,6 +377,12 @@
             
             .click-love-message {
                 font-size: 1.5rem;
+            }
+            
+            .love-notes-modal {
+                width: 80%;
+                max-width: none;
+                padding: 1.5rem;
             }
         }
     </style>
@@ -291,7 +403,7 @@
     <div class="click-love-message" id="click-love-message"></div>
     
     <header>
-        <h1>Happy Birthday  HASFIYA!</h1>
+        <h1>Happy Birthday HASFIYA!</h1>
         <p class="subtitle">Whenever I Listen Your Voice_My Heart Start Beating More Than 2X</p>
     </header>
     
@@ -299,444 +411,147 @@
         <div class="gallery">
             <!-- Gallery Item 1 -->
             <div class="gallery-item">
-        <img src="1.png" alt="My Love 1">
-        <div class="gallery-caption">
-            <h3>Happy Birthday</h3>
-            <p>Dear Hasfiya ❤️</p>
-        </div>
+                <img src="1.png" alt="My Love 1">
+                <div class="gallery-caption">
+                    <h3>Happy Birthday</h3>
+                    <p>Dear Hasfiya ❤️</p>
+                </div>
             </div>
             
             <!-- Gallery Item 2 -->
-           <div class="gallery-item">
-        <img src="2.png" alt="My Love 2">
-        <div class="gallery-caption">
-            <h3>Dear Hasfiya❤️</h3>
-            <p>Happy Birthday To You</p>
-        </div>
+            <div class="gallery-item">
+                <img src="2.png" alt="My Love 2">
+                <div class="gallery-caption">
+                    <h3>Dear Hasfiya❤️</h3>
+                    <p>Happy Birthday To You</p>
+                </div>
             </div>
             
             <!-- Gallery Item 3 -->
             <div class="gallery-item">
-        <img src="3.png" alt="My Love 3">
-        <div class="gallery-caption">
-            <h3>Cinema Time</h3>
-            <p>Best Moment of My life</p>
-        </div>
+                <img src="3.png" alt="My Love 3">
+                <div class="gallery-caption">
+                    <h3>Cinema Time</h3>
+                    <p>Best Moment of My life</p>
+                </div>
             </div>
             
             <!-- Gallery Item 4 -->
             <div class="gallery-item">
-        <img src="4.png" alt="My Love 4">
-        <div class="gallery-caption">
-            <h3>My Everything</h3>
-            <p>Heart, body and soul</p>
-        </div>
+                <img src="4.png" alt="My Love 4">
+                <div class="gallery-caption">
+                    <h3>My Everything</h3>
+                    <p>Heart, body and soul</p>
+                </div>
             </div>
             
             <!-- Gallery Item 5 -->
-           <div class="gallery-item">
-        <img src="5.png" alt="My Love 5">
-        <div class="gallery-caption">
-            <h3>Domino 's Time</h3>
-            <p>I Still Remember The Day</p>
-        </div>
+            <div class="gallery-item">
+                <img src="5.png" alt="My Love 5">
+                <div class="gallery-caption">
+                    <h3>Domino 's Time</h3>
+                    <p>I Still Remember The Day</p>
+                </div>
             </div>
             
             <!-- Gallery Item 6 -->
             <div class="gallery-item">
-        <img src="6.png" alt="My Love 6">
-        <div class="gallery-caption">
-            <h3>Forever Yours</h3>
-            <p>Through all lifetimes</p>
-        </div>
+                <img src="6.png" alt="My Love 6">
+                <div class="gallery-caption">
+                    <h3>Forever Yours</h3>
+                    <p>Through all lifetimes</p>
+                </div>
             </div>
 
             <!-- Gallery Item 7 -->
-<div class="gallery-item">
-    <img src="7.png" alt="My Love 7">
-    <div class="gallery-caption">
-        <h3>Forever Yours</h3>
-        <p>Through all lifetimes</p>
-    </div>
-</div>
+            <div class="gallery-item">
+                <img src="7.png" alt="My Love 7">
+                <div class="gallery-caption">
+                    <h3>Forever Yours</h3>
+                    <p>Through all lifetimes</p>
+                </div>
+            </div>
 
-<!-- Gallery Item 8 -->
-<div class="gallery-item">
-    <img src="8.png" alt="My Love 8">
-    <div class="gallery-caption">
-        <h3>Once Again</h3>
-        <p>Happy Birthday Dear Hasfiya</p>
-    </div>
-</div>
+            <!-- Gallery Item 8 -->
+            <div class="gallery-item">
+                <img src="8.png" alt="My Love 8">
+                <div class="gallery-caption">
+                    <h3>Once Again</h3>
+                    <p>Happy Birthday Dear Hasfiya</p>
+                </div>
+            </div>
 
-<!-- Gallery Item 9 -->
-<div class="gallery-item">
-    <img src="9.png" alt="My Love 9">
-    <div class="gallery-caption">
-        <h3>Love You Baby</h3>
-        <p>Will You Be Mine Forever💖</p>
-    </div>
-</div>
+            <!-- Gallery Item 9 -->
+            <div class="gallery-item">
+                <img src="9.png" alt="My Love 9">
+                <div class="gallery-caption">
+                    <h3>Love You Baby</h3>
+                    <p>Will You Be Mine Forever💖</p>
+                </div>
+            </div>
         </div>
     </main>
     
-    <!-- Add this in your footer section -->
-<footer>
-    <div class="love-note">
-        Love you Baby — Till Last breath. ❤️
-    </div>
-    <p>Created with endless love ~Mozahid <span class="gift-box" id="gift-box">🎁</span></p>
-    
-    <!-- Love Notes Modal -->
-    <div class="overlay" id="overlay"></div>
-    <div class="love-notes-modal" id="love-notes-modal">
-        <span class="close-notes" id="close-notes">&times;</span>
-        <div class="love-notes-content">
-            <p>For  Beautiful Hasfiya</p>
-            <p>Your smile lights up  World</p>
-            <p>Every moment with you is feels like a Dream</p>
-            <p>You are the missing piece of my Heart💞 .</p>
-            <p>Wishing the happiest birthday to the beautiful Girl</p>
+    <footer>
+        <div class="love-note">
+            Love you Baby — Till Last breath. ❤️
         </div>
-    </div>
-</footer>
-
-<style>
-    /* Gift Box Icon */
-    .gift-box {
-        display: inline-block;
-        margin-left: 10px;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: #ff6b6b;
-        transition: all 0.3s ease;
-        vertical-align: middle;
-        text-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
-    }
-    
-    .gift-box:hover {
-        transform: scale(1.2) rotate(10deg);
-        text-shadow: 0 3px 10px rgba(255, 107, 107, 0.5);
-    }
-    
-    /* Love Notes Modal */
-    .love-notes-modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.9);
-        background: linear-gradient(135deg, #fff5f5 0%, #ffecef 50%, #ffdfe6 100%);
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(15, 15, 15, 0.3);
-        z-index: 2000;
-        width: 50%;
-        max-width: 350px;
-        min-width: 250px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        text-align: center;
-        border: 1px solid #ffb6c1;
-    }
-    
-    .love-notes-modal.active {
-        opacity: 1;
-        pointer-events: all;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    
-    .love-notes-content p {
-        margin: 1rem 0;
-        font-size: 1.1rem;
-        line-height: 1.5;
-        color: #6a3a4a;
-        font-style: italic;
-        text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-    }
-    
-    .love-notes-content p:first-child {
-        color: #ff3a6e;
-        font-weight: bold;
-        font-size: 1.3rem;
-        font-style: normal;
-        margin-top: 0;
-        text-shadow: 0 2px 4px rgba(255,255,255,0.3);
-    }
-    
-    .love-notes-content p:last-child {
-        margin-bottom: 0;
-        color: #ff3a6e;
-        font-weight: bold;
-    }
-    
-    .close-notes {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: #ff8fa3;
-        transition: color 0.3s ease;
-        line-height: 1;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    
-    .close-notes:hover {
-        color: #ff3a6e;
-    }
-    
-    /* Overlay */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 0%;
-        background: rgba(3, 3, 3, 0.5);
-        z-index: 1000;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s ease;
-        backdrop-filter: blur(5px);
-    }
-    
-    .overlay.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    @media (max-width: 768px) {
-        .love-notes-modal {
-            width: 10%;
-            max-width: none;
-            padding: 1.5rem;
-        }
-    }
-</style>
-
-<script>
-    // Gift Box Click Handler
-    document.addEventListener('DOMContentLoaded', function() {
-        const giftBox = document.getElementById('gift-box');
-        const loveNotesModal = document.getElementById('love-notes-modal');
-        const overlay = document.getElementById('overlay');
-        const closeNotes = document.getElementById('close-notes');
+        <p>Created with endless love ~Mozahid <span class="gift-box" id="gift-box">🎁</span></p>
         
-        giftBox.addEventListener('click', function() {
-            loveNotesModal.classList.add('active');
-            overlay.classList.add('active');
-            
-            if ('vibrate' in navigator) {
-                navigator.vibrate([100, 50, 100]);
-            }
-            
-            // Create some hearts around the gift box
-            for (let i = 0; i < 8; i++) {
-                setTimeout(() => {
-                    const rect = giftBox.getBoundingClientRect();
-                    const x = rect.left + rect.width/2 + (Math.random() * 60 - 30);
-                    const y = rect.top + rect.height/2 + (Math.random() * 60 - 30);
-                    createClickHeart(x, y);
-                }, i * 150);
-            }
-        });
-        
-        closeNotes.addEventListener('click', function() {
-            loveNotesModal.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        
-        overlay.addEventListener('click', function() {
-            loveNotesModal.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    });
-
-    function createClickHeart(x, y) {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤️';
-        heart.classList.add('heart');
-        heart.style.position = 'fixed';
-        heart.style.left = `${x}px`;
-        heart.style.top = `${y}px`;
-        heart.style.fontSize = `${Math.random() * 1 + 1}rem`;
-        heart.style.animation = 'floatUp 3s ease-out forwards';
-        heart.style.zIndex = '1000';
-        heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
-        
-        document.getElementById('hearts-container').appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 3000);
-    }
-</script>
+        <!-- Love Notes Modal -->
+        <div class="overlay" id="overlay"></div>
+        <div class="love-notes-modal" id="love-notes-modal">
+            <span class="close-notes" id="close-notes">&times;</span>
+            <div class="love-notes-content">
+                <p>For Beautiful Hasfiya</p>
+                <p>Your smile lights up World</p>
+                <p>Every moment with you is feels like a Dream</p>
+                <p>You are the missing piece of my Heart💞 .</p>
+                <p>Wishing the happiest birthday to the beautiful Girl</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Create floating hearts continuously
+        // Gift Box Click Handler - MODIFIED TO FIX CLOSE BUTTON
         document.addEventListener('DOMContentLoaded', function() {
-            // Create initial burst of hearts
-            createHeartBurst();
+            const giftBox = document.getElementById('gift-box');
+            const loveNotesModal = document.getElementById('love-notes-modal');
+            const overlay = document.getElementById('overlay');
+            const closeNotes = document.getElementById('close-notes');
             
-            // Continue creating hearts every second
-            setInterval(createHeartBurst, 1000);
-            
-            // Create balloons continuously
-            createBalloonBurst();
-            setInterval(createBalloonBurst, 2000);
-            
-            // Make gallery items appear one by one
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            giftBox.addEventListener('click', function(e) {
+                e.stopPropagation(); // Added to prevent event bubbling
+                loveNotesModal.classList.add('active');
+                overlay.classList.add('active');
                 
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 500 + (index * 100));
+                if ('vibrate' in navigator) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+                
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const rect = giftBox.getBoundingClientRect();
+                        const x = rect.left + rect.width/2 + (Math.random() * 60 - 30);
+                        const y = rect.top + rect.height/2 + (Math.random() * 60 - 30);
+                        createClickHeart(x, y);
+                    }, i * 150);
+                }
             });
             
-            // Setup birthday message
-            const birthdayMsg = document.getElementById('birthday-message');
-            birthdayMsg.textContent = 'Happy Birthday Hasfiya🎂 ';
+            closeNotes.addEventListener('click', function(e) {
+                e.stopPropagation(); // Added to prevent event bubbling
+                loveNotesModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
             
-            // Show birthday message after 5 seconds
-            setTimeout(() => {
-                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
-                // Remove after animation
-                setTimeout(() => {
-                    birthdayMsg.style.animation = '';
-                    birthdayMsg.style.opacity = '0';
-                }, 5000);
-            }, 5000);
-            
-            // Show again every 30 seconds
-            setInterval(() => {
-                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
-                setTimeout(() => {
-                    birthdayMsg.style.animation = '';
-                    birthdayMsg.style.opacity = '0';
-                }, 5000);
-            }, 30000);
+            overlay.addEventListener('click', function(e) {
+                e.stopPropagation(); // Added to prevent event bubbling
+                loveNotesModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
         });
-        
-        // Romantic background music
-        const audio = new Audio('123.mp3');
-        audio.loop = true;
-        
-        // Start music after first interaction
-        function startMusic() {
-            audio.play().catch(e => console.log("Audio play prevented:", e));
-            document.body.removeEventListener('click', startMusic);
-        }
-        document.body.addEventListener('click', startMusic);
-        
-        function createHeartBurst() {
-            // Create 10-15 hearts in random positions along the bottom
-            const heartCount = Math.floor(Math.random() * 6) + 10;
-            
-            for (let i = 0; i < heartCount; i++) {
-                setTimeout(() => {
-                    createHeart();
-                }, i * 100);
-            }
-        }
-        
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            
-            // Random properties
-            const startX = Math.random() * 100;
-            const size = Math.random() * 1.5 + 0.5;
-            const duration = Math.random() * 5 + 8; // 8-13 seconds
-            const delay = Math.random() * 2;
-            const colorVariation = Math.random() * 60 + 330; // Pink/red hues
-            
-            heart.style.left = `${startX}%`;
-            heart.style.fontSize = `${size}rem`;
-            heart.style.color = `hsl(${colorVariation}, 100%, 70%)`;
-            heart.style.animationDuration = `${duration}s`;
-            heart.style.animationDelay = `${delay}s`;
-            heart.style.opacity = '0.8';
-            
-            document.getElementById('hearts-container').appendChild(heart);
-            
-            // Remove heart after animation completes
-            setTimeout(() => {
-                heart.remove();
-            }, (duration + delay) * 1000);
-        }
-        
-        function createBalloonBurst() {
-            // Create 3-6 balloons in random positions along the top
-            const balloonCount = Math.floor(Math.random() * 4) + 3;
-            
-            for (let i = 0; i < balloonCount; i++) {
-                setTimeout(() => {
-                    createBalloon();
-                }, i * 300);
-            }
-        }
-        
-        function createBalloon() {
-            const balloon = document.createElement('div');
-            balloon.classList.add('balloon');
-            
-            // Random properties
-            const startX = Math.random() * 100;
-            const size = Math.random() * 30 + 30; // 30-60px
-            const duration = Math.random() * 10 + 15; // 15-25 seconds
-            const delay = Math.random() * 5;
-            const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffd6d6', '#f06292', '#ba68c8', '#9575cd', '#7986cb', '#64b5f6', '#4fc3f7'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const sway = Math.random() * 20 - 10; // -10 to 10 degrees
-            
-            balloon.style.left = `${startX}%`;
-            balloon.style.width = `${size}px`;
-            balloon.style.height = `${size * 1.25}px`;
-            balloon.style.background = color;
-            balloon.style.animationDuration = `${duration}s`;
-            balloon.style.animationDelay = `${delay}s`;
-            balloon.style.transform = `translateX(${sway}px)`;
-            
-            document.getElementById('balloons-container').appendChild(balloon);
-            
-            // Remove balloon after animation completes
-            setTimeout(() => {
-                balloon.remove();
-            }, (duration + delay) * 1000);
-        }
-        
-        // Click event handler with vibration and love message
-        document.addEventListener('click', function(e) {
-            // Vibrate if supported (mobile devices)
-            if ('vibrate' in navigator) {
-                // Vibrate pattern: 200ms vibration, 100ms pause, 200ms vibration
-                navigator.vibrate([200, 100, 200]);
-            }
-            
-            // Show love message
-            const loveMsg = document.getElementById('click-love-message');
-            loveMsg.textContent = 'Happy Birthday To You ❣️';
-            loveMsg.style.animation = 'none';
-            void loveMsg.offsetWidth; // Trigger reflow
-            loveMsg.style.animation = 'fadeInOut 5s ease';
-            
-            // Create hearts at click position
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    const x = e.clientX + (Math.random() * 60 - 30);
-                    const y = e.clientY + (Math.random() * 60 - 30);
-                    createClickHeart(x, y);
-                }, i * 100);
-            }
-        });
-        
+
         function createClickHeart(x, y) {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';
@@ -755,6 +570,150 @@
                 heart.remove();
             }, 3000);
         }
+
+        // Create floating hearts continuously
+        function createHeartBurst() {
+            const heartCount = Math.floor(Math.random() * 6) + 10;
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 100);
+            }
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            const startX = Math.random() * 100;
+            const size = Math.random() * 1.5 + 0.5;
+            const duration = Math.random() * 5 + 8;
+            const delay = Math.random() * 2;
+            const colorVariation = Math.random() * 60 + 330;
+            
+            heart.style.left = `${startX}%`;
+            heart.style.fontSize = `${size}rem`;
+            heart.style.color = `hsl(${colorVariation}, 100%, 70%)`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.animationDelay = `${delay}s`;
+            heart.style.opacity = '0.8';
+            
+            document.getElementById('hearts-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        function createBalloonBurst() {
+            const balloonCount = Math.floor(Math.random() * 4) + 3;
+            
+            for (let i = 0; i < balloonCount; i++) {
+                setTimeout(() => {
+                    createBalloon();
+                }, i * 300);
+            }
+        }
+        
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            const startX = Math.random() * 100;
+            const size = Math.random() * 30 + 30;
+            const duration = Math.random() * 10 + 15;
+            const delay = Math.random() * 5;
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ffd6d6', '#f06292', '#ba68c8', '#9575cd', '#7986cb', '#64b5f6', '#4fc3f7'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const sway = Math.random() * 20 - 10;
+            
+            balloon.style.left = `${startX}%`;
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size * 1.25}px`;
+            balloon.style.background = color;
+            balloon.style.animationDuration = `${duration}s`;
+            balloon.style.animationDelay = `${delay}s`;
+            balloon.style.transform = `translateX(${sway}px)`;
+            
+            document.getElementById('balloons-container').appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // Romantic background music
+        const audio = new Audio('123.mp3');
+        audio.loop = true;
+        
+        function startMusic() {
+            audio.play().catch(e => console.log("Audio play prevented:", e));
+            document.body.removeEventListener('click', startMusic);
+        }
+        document.body.addEventListener('click', startMusic);
+        
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', function() {
+            createHeartBurst();
+            setInterval(createHeartBurst, 1000);
+            
+            createBalloonBurst();
+            setInterval(createBalloonBurst, 2000);
+            
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+            
+            const birthdayMsg = document.getElementById('birthday-message');
+            birthdayMsg.textContent = 'Happy Birthday Hasfiya🎂 ';
+            
+            setTimeout(() => {
+                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
+                setTimeout(() => {
+                    birthdayMsg.style.animation = '';
+                    birthdayMsg.style.opacity = '0';
+                }, 5000);
+            }, 5000);
+            
+            setInterval(() => {
+                birthdayMsg.style.animation = 'fadeInOut 5s ease forwards';
+                setTimeout(() => {
+                    birthdayMsg.style.animation = '';
+                    birthdayMsg.style.opacity = '0';
+                }, 5000);
+            }, 30000);
+        });
+        
+        // Click event handler
+        document.addEventListener('click', function(e) {
+            if ('vibrate' in navigator) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            const loveMsg = document.getElementById('click-love-message');
+            loveMsg.textContent = 'Happy Birthday To You ❣️';
+            loveMsg.style.animation = 'none';
+            void loveMsg.offsetWidth;
+            loveMsg.style.animation = 'fadeInOut 5s ease';
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const x = e.clientX + (Math.random() * 60 - 30);
+                    const y = e.clientY + (Math.random() * 60 - 30);
+                    createClickHeart(x, y);
+                }, i * 100);
+            }
+        });
     </script>
 </body>
 </html>
