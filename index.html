@@ -346,8 +346,8 @@
             <div class="gallery-item">
         <img src="6.png" alt="My Love 6">
         <div class="gallery-caption">
-            <h3>Even From Afar</h3>
-            <p>I’m with you, in silence & in dreams</p>
+            <h3>Forever Yours</h3>
+            <p>Through all lifetimes</p>
         </div>
             </div>
 
@@ -355,8 +355,8 @@
 <div class="gallery-item">
     <img src="7.png" alt="My Love 7">
     <div class="gallery-caption">
-        <h3>Until The End of Time</h3>
-        <p>My heart beats only for you</p>
+        <h3>Forever Yours</h3>
+        <p>Through all lifetimes</p>
     </div>
 </div>
 
@@ -380,12 +380,198 @@
         </div>
     </main>
     
-    <footer>
-        <div class="love-note">
-            Love you Baby — Till Last breath. ❤️
+    <!-- Add this in your footer section -->
+<footer>
+    <div class="love-note">
+        Love you Baby — Till Last breath. ❤️
+    </div>
+    <p>Created with endless love ~Mozahid <span class="gift-box" id="gift-box">🎁</span></p>
+    
+    <!-- Love Notes Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="love-notes-modal" id="love-notes-modal">
+        <span class="close-notes" id="close-notes">&times;</span>
+        <div class="love-notes-content">
+            <p>For  Beautiful Hasfiya</p>
+            <p>Your smile lights up  World</p>
+            <p>Every moment with you is feels like a Dream</p>
+            <p>You are the missing piece of my Heart💞 .</p>
+            <p>Wishing the happiest birthday to the beautiful Girl</p>
         </div>
-        <p>Created with endless love ~Mozahid</p>
-    </footer>
+    </div>
+</footer>
+
+<style>
+    /* Gift Box Icon */
+    .gift-box {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #ff6b6b;
+        transition: all 0.3s ease;
+        vertical-align: middle;
+        text-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+    }
+    
+    .gift-box:hover {
+        transform: scale(1.2) rotate(10deg);
+        text-shadow: 0 3px 10px rgba(255, 107, 107, 0.5);
+    }
+    
+    /* Love Notes Modal */
+    .love-notes-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: linear-gradient(135deg, #fff5f5 0%, #ffecef 50%, #ffdfe6 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(15, 15, 15, 0.3);
+        z-index: 2000;
+        width: 50%;
+        max-width: 350px;
+        min-width: 250px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-align: center;
+        border: 1px solid #ffb6c1;
+    }
+    
+    .love-notes-modal.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .love-notes-content p {
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #6a3a4a;
+        font-style: italic;
+        text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+    }
+    
+    .love-notes-content p:first-child {
+        color: #ff3a6e;
+        font-weight: bold;
+        font-size: 1.3rem;
+        font-style: normal;
+        margin-top: 0;
+        text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+    }
+    
+    .love-notes-content p:last-child {
+        margin-bottom: 0;
+        color: #ff3a6e;
+        font-weight: bold;
+    }
+    
+    .close-notes {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #ff8fa3;
+        transition: color 0.3s ease;
+        line-height: 1;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .close-notes:hover {
+        color: #ff3a6e;
+    }
+    
+    /* Overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background: rgba(3, 3, 3, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+        backdrop-filter: blur(5px);
+    }
+    
+    .overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    @media (max-width: 768px) {
+        .love-notes-modal {
+            width: 10%;
+            max-width: none;
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    // Gift Box Click Handler
+    document.addEventListener('DOMContentLoaded', function() {
+        const giftBox = document.getElementById('gift-box');
+        const loveNotesModal = document.getElementById('love-notes-modal');
+        const overlay = document.getElementById('overlay');
+        const closeNotes = document.getElementById('close-notes');
+        
+        giftBox.addEventListener('click', function() {
+            loveNotesModal.classList.add('active');
+            overlay.classList.add('active');
+            
+            if ('vibrate' in navigator) {
+                navigator.vibrate([100, 50, 100]);
+            }
+            
+            // Create some hearts around the gift box
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const rect = giftBox.getBoundingClientRect();
+                    const x = rect.left + rect.width/2 + (Math.random() * 60 - 30);
+                    const y = rect.top + rect.height/2 + (Math.random() * 60 - 30);
+                    createClickHeart(x, y);
+                }, i * 150);
+            }
+        });
+        
+        closeNotes.addEventListener('click', function() {
+            loveNotesModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            loveNotesModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+
+    function createClickHeart(x, y) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.classList.add('heart');
+        heart.style.position = 'fixed';
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+        heart.style.fontSize = `${Math.random() * 1 + 1}rem`;
+        heart.style.animation = 'floatUp 3s ease-out forwards';
+        heart.style.zIndex = '1000';
+        heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 70%)`;
+        
+        document.getElementById('hearts-container').appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
+    }
+</script>
 
     <script>
         // Create floating hearts continuously
